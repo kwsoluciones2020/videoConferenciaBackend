@@ -1,0 +1,441 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Tour API",
+    "description": "Documentation de <b>Back-End</b>."
+  },
+  "host": "",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "User",
+      "description": "Endpoints"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    },
+    "petstore_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://petstore.swagger.io/oauth/authorize",
+      "flow": "implicit",
+      "scopes": {
+        "read_pets": "read your pets",
+        "write_pets": "modify pets in your account"
+      }
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/users/verify": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint para login mediante GOOGLE si el usuario se encuentra registrado.",
+        "parameters": [
+          {
+            "name": "req.body",
+            "in": "body",
+            "description": "Informacion de Endpoint.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginSocial"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/users/sendemailrecovery": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint para enviar correo de recuepracion.",
+        "parameters": [
+          {
+            "name": "req.body",
+            "in": "body",
+            "description": "Informacion de Endpoint.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginSocial"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/validatecode": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint para login mediante GOOGLE si el usuario se encuentra registrado.",
+        "parameters": [
+          {
+            "name": "req.body",
+            "in": "body",
+            "description": "Informacion de Endpoint.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CodeVerify"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/logingoogle": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint para login mediante GOOGLE si el usuario se encuentra registrado.",
+        "parameters": [
+          {
+            "name": "req.body",
+            "in": "body",
+            "description": "Informacion de Endpoint.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/loginregoogle": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint para Re-login mediante GOOGLE si el usuario se encuentra registrado.",
+        "parameters": [
+          {
+            "name": "req.body",
+            "in": "body",
+            "description": "Informacion de Endpoint.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginSocial"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint para ver lista de usuario.",
+        "parameters": [
+          {
+            "name": "paginator",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário encontrado.",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint para registro de usuario.",
+        "parameters": [
+          {
+            "name": "req.body",
+            "in": "body",
+            "description": "Informacion de Endpoint.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddUser"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Jhon Doe"
+        },
+        "identificacion": {
+          "type": "string",
+          "example": "V-20000000"
+        },
+        "email": {
+          "type": "string",
+          "example": "emailito@mail.com"
+        },
+        "phone": {
+          "type": "string",
+          "example": "+584141403794"
+        },
+        "address": {
+          "type": "string",
+          "example": "Av.Venezuela #3"
+        },
+        "password": {
+          "type": "string",
+          "example": "12345667890"
+        },
+        "image": {
+          "type": "string",
+          "example": ""
+        },
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "legal_name": {
+          "type": "string",
+          "example": ""
+        },
+        "commercial_name": {
+          "type": "string",
+          "example": ""
+        },
+        "front_page": {
+          "type": "string",
+          "example": ""
+        },
+        "opening_hours": {
+          "type": "string",
+          "example": ""
+        },
+        "token_access": {
+          "type": "string",
+          "example": ""
+        },
+        "rol": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "name",
+        "identificacion",
+        "email"
+      ]
+    },
+    "AddUser": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Jhon Doe"
+        },
+        "identificacion": {
+          "type": "string",
+          "example": "V-20000000"
+        },
+        "email": {
+          "type": "string",
+          "example": "emailito@mail.com"
+        },
+        "phone": {
+          "type": "string",
+          "example": "+584141403794"
+        },
+        "address": {
+          "type": "string",
+          "example": "Av.Venezuela #3"
+        },
+        "password": {
+          "type": "string",
+          "example": "12345667890"
+        },
+        "image": {
+          "type": "string",
+          "example": ""
+        },
+        "status": {
+          "type": "boolean",
+          "example": true
+        },
+        "legal_name": {
+          "type": "string",
+          "example": ""
+        },
+        "commercial_name": {
+          "type": "string",
+          "example": ""
+        },
+        "front_page": {
+          "type": "string",
+          "example": ""
+        },
+        "opening_hours": {
+          "type": "string",
+          "example": ""
+        },
+        "token_access": {
+          "type": "string",
+          "example": ""
+        },
+        "rol": {
+          "type": "number",
+          "example": 1
+        },
+        "account_type": {
+          "type": "string",
+          "example": ""
+        },
+        "code_recovery": {
+          "type": "string",
+          "example": ""
+        }
+      },
+      "required": [
+        "name",
+        "identificacion",
+        "email"
+      ]
+    },
+    "Login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "emailito@mail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "Password"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "LoginSocial": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "emailito@mail.com"
+        }
+      },
+      "required": [
+        "email"
+      ]
+    },
+    "CodeVerify": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "emailito@mail.com"
+        },
+        "code": {
+          "type": "string",
+          "example": "1234"
+        }
+      },
+      "required": [
+        "email",
+        "code"
+      ]
+    }
+  }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Email:Clicken1</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            top:0;
+            bottom:0;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .contenedor-mailing{
+            width: 800px;
+            height: 1100px;
+            margin: auto;
+        }
+        .contenedor-mailing .header-mailing{
+            background-color: #CEE3F6;
+            width: 100%;
+            height: 150px;
+            position: relative;
+        }
+        .contenedor-mailing .header-mailing img{
+            position: absolute;
+            left: 10px;
+        }
+        .contenedor-icono{
+            margin:60px auto;
+            width: 420px;
+        }
+        .contenedor-icono h2{
+            text-align: center;
+        }
+        .contenedor-icono p{
+            text-align: center;
+            margin-top: 50px;
+        }
+        .contenedor-icono h3{
+            text-align: center;
+        }
+        .contenedor-icono h3 a{
+            text-decoration: none;
+            color: #2E64FE;
+        }
+        .contenedor-icono h3 a:hover{
+            color: #FF0040;
+        }
+        .footer-mailing{
+            background-color:#035D95;
+            width: 100%;
+            height:150px;
+            padding-top: 20px;
+        }
+        .footer-mailing p{
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+        }
+        @media(max-width:425px){
+            .contenedor-mailing{
+                width: 100%;
+                height: auto;
+            }
+            .contenedor-mailing .header-mailing{
+                height:115px;
+            }
+            .contenedor-mailing .header-mailing img{
+                width: 165px;
+                left: 17px;
+                top: 17px;
+            }
+            .contenedor-mailing .contenedor-icono{
+                width: 350px;
+            }
+            .contenedor-mailing .contenedor-icono img{
+                width: 330px;
+            }
+            .contenedor-mailing .footer-mailing{
+                height: 100px;
+            }
+            .contenedor-mailing .footer-mailing p{ 
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor-mailing">
+        <div class="header-mailing">
+            <img src="http://test1.clicken1.com/logo_ck1.png" alt="">
+        </div>
+        <div class="contenedor-icono">
+            <img src="http://test1.clicken1.com/icono_email_desk.svg" alt="">
+            <h2>Tu codigo de verificacion</h2>
+            <p>
+               Olvidaste tu Contraseña, utiliza este codigo de verificacion para cambiar tu Contraseña. 
+            </p>
+			<p style="color:red;">Codigo de verificacion : <b style=" font-size: 30px; color:#2E64FE">${pass}</b></p></br>
+            <h3>Contacto: <a href="mailto:contacto@clicken1.com">contacto@clicken1.com</a></h3>
+        </div>
+        <div class="footer-mailing">
+            <p><b> Clicken1 | Educacion Moderna para la Nueva Era </b></p>
+            <p> Todos los derechos reservados 2020-2022</p>
+        </div>
+    </div>
+</body>
+</html>
