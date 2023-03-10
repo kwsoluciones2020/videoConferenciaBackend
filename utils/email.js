@@ -1,15 +1,9 @@
 const nodemailer = require('nodemailer');
 
-const Email = require("../email.config")
-
 fs = require("fs"); 
 NOMBRE_ARCHIVO = __dirname + "/mail.txt";
 
- 
-var sender_email = 'tourdigitalmall@gmail.com';
-var email_subject = 'Tour Registro';
-let text = "";
-let text1 = "";
+
 let recoveryPass = 0;
 
 let mailData = {
