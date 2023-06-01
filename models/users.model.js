@@ -71,7 +71,13 @@ module.exports = (sequelize, Sequelize) => {
       code_recovery: {
         type: DataTypes.STRING,
         allowNull: true
-      }
+      },
+      plan: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue:0
+      },
+      
     });
     return User;
   };

@@ -9,6 +9,8 @@ const swaggerFile = require('./swagger_output.json');
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load('./openapi.yaml');
 const userRoutes = require('./users/routes');
+const meetRoutes = require('./src/meet/routes');
+
 const sendEmail = require("./utils/email")
 const ejs = require("ejs")
 fs = require("fs"); 
@@ -35,5 +37,6 @@ app.use(bodyParser.urlencoded({ limit: "150mb", extended: false }));
 
 
 app.use('/api/v1', userRoutes);
+app.use('/api/v1', meetRoutes);
 
 app.listen(port, () => console.log(`app listening on port ${port}`));
