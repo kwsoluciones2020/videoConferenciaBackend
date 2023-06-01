@@ -29,7 +29,7 @@ db.meet = require("./models/meet.model")(sequelize, Sequelize);
 
 
 
- sequelize.sync().then(() => {
+ sequelize.sync({alter:true}).then(() => {
 //  console.log('Book table created successfully!');
 }).catch((error) => {
  // console.error('Unable to create table : ', error);
