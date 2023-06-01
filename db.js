@@ -25,6 +25,8 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.user = require("./models/users.model")(sequelize, Sequelize);
+db.meet = require("./models/meet.model")(sequelize, Sequelize);
+
 
 
  sequelize.sync().then(() => {
